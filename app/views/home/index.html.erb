@@ -10,25 +10,21 @@
 <div style="width: 100%;">
     <!-- left div -->
     <div style="width: 50%; height: 100px; float: left;"> 
-        <br><img src="assets/marss-light.png" height="415vh" style='border-radius: 15px; margin: auto; margin-top: 2%' class="d-flex justify-content-center"/>
+        <br><img src="assets/marss-light.png" height="415vh" style='border-radius: 15px; margin: auto; margin-top: 3%' class="d-flex justify-content-center"/>
         <br><div id='typewriter' class="d-flex justify-content-center" style="margin: 20px; margin-bottom: 28px;"></div>
     </div>
     <!-- right div -->
-    <div style="margin-left: 50%; height: 100px;">
-      <div style="padding-top: 20%;">
-        <div class="card" style="width: 18rem; margin-bottom: 2%;">
-          <%= form_tag '/login', style: "width: 50%; margin-left: 15%;" do %>
-            <span style='color: black;'><%= label_tag :username%></span>
-            <%= text_field_tag :username %>
-            <%= label_tag :password%>
-            <%= password_field_tag :password%><br>
-            <%= submit_tag "Login", class: "btn btn-primary d-flex justify-content-center", style: "margin: auto; width: 200px; margin-top: 20px;"%>
+    <div style="margin-left: 50%; height: 100px; padding-top: 70px;">
+      <div style="padding-top: 18%; margin: 0 auto;">
+        <div class="card" style="margin: 0 auto; border-radius: 14px; width: 25rem; margin-bottom: 2%; background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); height: 300px;">
+          <%= form_tag '/login', style: "width: 100%; height: 100%;" do %>
+            <div style='padding-left: 106px; padding-top: 50px; color: black; float: center; margin: 0 auto;'><%= label_tag :username%></div>
+            <div class="d-flex justify-content-center" style='color: black; float: center; margin: 0 auto;'><%= text_field_tag :username %></div>
+            <div style='padding-left: 106px; padding-top: 10px; color: black; float: center; margin: 0 auto;'><%= label_tag :password%></div>
+            <div class="d-flex justify-content-center" style='color: black; float: center; margin: 0 auto;'><%= password_field_tag :password, nil, class: 'border-radius: 14px;'%></div>
+            <%= submit_tag "Login", class: "btn btn-dark d-flex justify-content-center", style: "margin: 0 auto; float: bottom; width: 200px; margin-top: 40px;"%>
           <%end%>
         </div>
       </div>
     </div>
 </div>
-
-<% if logged_in? %>
-    <h1>you shouldn't see this</h1>
-<%end%>

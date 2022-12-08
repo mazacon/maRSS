@@ -1,8 +1,19 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f|%>
-  <%= f.label :username%><br>
-  <%= f.text_field :username%><br>
-  <%= f.label :password%><br>
-  <%= f.password_field :password%><br>
-  <%= f.submit %>
-<%end%>
+<div style="width: 100%;">
+<img src="assets/marss-light.png" height="70vh" style='border-radius: 200px; margin: auto; margin-top: 3%' class="d-flex justify-content-center"/>
+  <div class="d-flex justify-content-center" style="height: 100px; padding-top: 15px;">
+    <h1 style="margin: 20px;">Sign up for ma<span style='color: #c91a1b'>RSS</span></h1>
+  </div>
+</div>
+<div style="height: 100px; padding-top: 40px;">
+  <div style="margin: 0 auto; color: #0f0f0f;">
+    <div class="card" style="margin: 0 auto; width: 27rem; margin-bottom: 2%; height: 300px; background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%); ">
+      <%= form_for @user, style: "width: 100%; height: 100%;" do |f|%>
+        <%= f.label :username, style: "padding-left: 125px; padding-top: 50px; color: #121212; float: center; margin: 0 auto;"%>
+        <%= f.text_field :username, class: "d-flex justify-content-center", style: "margin: 0 auto; border-radius: 12px; border-width: 0; margin-top: 5px;"%>
+        <%= f.label :password, style: "padding-left: 125px; padding-top: 10px; float: center; margin: 0 auto;"%>
+        <%= f.password_field :password, class: "d-flex justify-content-center", style: "margin: 0 auto; border-radius: 12px; border-width: 0; margin-top: 5px;"%>
+        <%= f.submit class: "btn btn-warning d-flex justify-content-center", style: "margin: 0 auto; margin-top: 40px; width: 190px;"%>
+      <%end%>
+    </div>
+  </div>
+</div>
