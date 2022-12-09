@@ -1,0 +1,49 @@
+  <% url = URI.open(@feed.link) %>
+  <% rss = RSS::Parser.parse(url) %>
+
+<div id="wrapperDiv">
+  <div style="height:160px; padding:20px; float:left; width: 20vw;">
+    <img src="/assets/marss-light.png" height="110vh" style='border-radius: 100px;'/>
+  </div>
+  <div style="height:160px; padding:20px; float: left; width: 60vw;">
+    <h1 class="d-flex justify-content-center" style="padding-top: 30px;"><%= rss.channel.title %></h1>
+  </div>
+  <div style="height:160px; padding:20px; float:right; width: 20vw;">
+    <div style="width: 150px; float: right; margin: 1px; color: white;">
+      <!-- <%= button_to "Sign out", '/logout', method: :get, style: "width: 150px; float: right; margin: 10px;", class: "btn btn-light"%> -->
+      <%= button_to "Delete this feed", @feed, method: :delete, style: "width: 150px; float: right; margin: 10px; color: white;", class: "btn btn-danger" %>
+      <%= link_to "Back to feeds", feeds_path, style: "width: 150px; float: right; margin: 10px; color: white;", class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
+
+<div style="padding-left: 70px; padding-top: 215px; padding-right: 250px; padding-bottom: 50px;">
+
+
+    <ul class="list-group" style="width: 100%;">
+      <% rss.items.each do |i| %>
+        <% n_a = 'N/A' %>
+        <% author = i.author ? i.author : n_a %>
+        <% link = i.link ? i.link : n_a %>
+        <% title = i.title ? i.title : n_a %>
+        <% desc = i.description ? i.description : n_a %>
+        <% pub_date = i.pubDate ? i.pubDate : n_a %>
+        <% image_link = i.enclosure.url ? i.enclosure.url : n_a %>
+
+        <li class="list-group-item" style="float: left;">
+          <%= image_tag image_link, style: "height: 135px; border-radius: 12px; float: left;" %>
+          <div style="padding-left: 150px;">
+            Title: <%= link_to "#{title}", link %><br>
+            by: <%= author %>  on <%= pub_date %><br>
+            Description: <%= desc %><br>
+          </div>
+          
+        </li>
+
+      <% end %>
+    </ul>
+
+</div>
+
+
+

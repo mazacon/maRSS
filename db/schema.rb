@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_065815) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_231551) do
+  create_table "feeds", force: :cascade do |t|
+    t.text "link"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_feeds_on_user_id"
+  end
+
   create_table "rss_links", force: :cascade do |t|
     t.text "url"
     t.integer "user_id", null: false
@@ -26,5 +34,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_065815) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "feeds", "users"
   add_foreign_key "rss_links", "users"
 end

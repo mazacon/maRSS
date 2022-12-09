@@ -1,0 +1,37 @@
+<div id="wrapperDiv">
+  <div style="height:160px; padding:20px; float:left; width: 20vw;">
+    <img src="/assets/marss-light.png" height="110vh" style='border-radius: 100px;'/>
+  </div>
+  <div style="height:160px; padding:20px; float: left; width: 60vw;">
+    <h1 class="d-flex justify-content-center" style="padding-top: 30px;"><%= current_user.username %>'s RSS feeds</h1>
+  </div>
+  <div style="height:160px; padding:20px; float:right; width: 20vw;">
+    <div style="width: 150px; float: right; margin: 1px; color: white;">
+      <%= button_to "Sign out", '/logout', method: :get, style: "width: 150px; float: right; margin: 10px;", class: "btn btn-light"%>
+      <%= button_to "Add Feed", '/feeds/new', method: :get, style: "width: 150px; float: right; margin: 10px; color: white;", class: "btn btn-info"%>
+    </div>
+  </div>
+</div>
+
+<div style="padding-left: 70px; padding-top: 170px; padding-right: 70px;">
+    <div id="feeds">
+      <ul class="list-group">
+
+        <% @feeds.each do |feed| %>
+          <% begin %>
+            <% url = URI.open(feed.link) %>
+            <% rss = RSS::Parser.parse(url) %>
+          <% rescue => error %>
+            <% next %>
+          <% else %>
+            <% if rss != nil %>
+              <li class="list-group-item">
+                <%= link_to "#{rss.channel.title}", feed %>
+              </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+</div>
+

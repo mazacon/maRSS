@@ -20,7 +20,7 @@ if (document.getElementById('typewriter')) {
     .pauseFor(3000)
     .deleteChars(25)
     .pauseFor(200)
-    .typeString('<strong>by Maz for Backstitch.io</strong>')
+    .typeString('<strong>by Maz for backstitch.io</strong>')
     .pauseFor(3000)
     .deleteChars(24)
     .pauseFor(200)

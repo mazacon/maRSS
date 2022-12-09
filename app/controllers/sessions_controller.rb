@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     # if found create a new session for them else refresh page
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to '/reader'
+      redirect_to '/feeds'
     else
       # maybe flash bad credentials here
       redirect_to '/'
