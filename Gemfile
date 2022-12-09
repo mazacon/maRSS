@@ -75,3 +75,7 @@ group :test do
 end
 
 gem "bcrypt", "~> 3.1"
+
+gem "rss", "~> 0.2.9"
+
+gem "open-uri", "~> 0.3.0"
