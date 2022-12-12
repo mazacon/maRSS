@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/feeds'
     else
-      # maybe flash bad credentials here
-      redirect_to '/'
+      # TODO: flash invalid credentials
+      redirect_to root_path
     end
   end
 
-  def destroy
+  def destroy # delete user_id from current session and redirect to home
     session.delete :user_id
-    redirect_to '/'
+    redirect_to root_path
   end
 end

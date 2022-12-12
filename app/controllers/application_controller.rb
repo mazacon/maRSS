@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
-    # flash bad credentials
-    redirect_to '/' unless logged_in?
+    # TODO: flash unauthorized
+    redirect_to root_path unless logged_in?
   end
 end

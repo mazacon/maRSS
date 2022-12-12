@@ -1,15 +1,15 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: %i[ show edit update destroy ]
 
-  # GET /feeds or /feeds.json
+  # GET /feeds
   def index
     @feeds = Feed.where(user_id: session[:user_id])
     @feed = Feed.new
   end
 
-  # GET /feeds/1 or /feeds/1.json
+  # GET /feeds/:id
   def show
-    redirect_to '/feeds' unless @feed.user_id == session[:user_id]
+    redirect_to feeds_path unless @feed.user_id == session[:user_id]
   end
 
   # GET /feeds/new
@@ -17,29 +17,25 @@ class FeedsController < ApplicationController
     @feed = Feed.new
   end
 
-  # POST /feeds or /feeds.json
+  # POST /feeds
   def create
     @feed = Feed.new(feed_params)
 
     respond_to do |format|
       if @feed.save
-        format.html { redirect_to feeds_url }
-        # format.json { render :show, status: :created, location: @feed }
+        redirect_to feeds_path
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @feed.errors, status: :unprocessable_entity }
+        render :new, status: :unprocessable_entity
       end
     end
   end
 
-  # DELETE /feeds/1 or /feeds/1.json
+  # DELETE /feeds/:id
   def destroy
     @feed.destroy
 
-    respond_to do |format|
-      format.html { redirect_to feeds_url, notice: "Feed was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    # TODO: catch notice in erb
+    redirect_to feeds_path, notice: "Feed was successfully destroyed."
   end
 
   private
